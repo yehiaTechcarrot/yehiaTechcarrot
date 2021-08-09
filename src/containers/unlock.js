@@ -10,6 +10,7 @@ import {
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import CustomGradientButton from "../components/gradiantButton";
 import LinearGradient from "react-native-linear-gradient";
+import { AuthContext } from "../context";
 
 
 const window = Dimensions.get("window");
@@ -17,8 +18,12 @@ const window = Dimensions.get("window");
 
 class UnlockScreen extends Component {
 
+  static contextType = AuthContext;
 
   render() {
+
+    const { login } = this.context
+
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" />
@@ -166,6 +171,7 @@ class UnlockScreen extends Component {
                 text="Continue"
                 marginTop={window.height * 0.03}
                 marginBottom={window.height * 0.045}
+                onPress={()=> login()}
               />
             </View>
 
